@@ -9,7 +9,7 @@ function startTimer(duration) {
 
         if (--timer < 0) {
             timer = duration;
-            alert("???");
+            alert("Go do pushups");
         }
     }, 1000);
 }
