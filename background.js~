@@ -1,9 +1,3 @@
-var overlay = document.createElement('div');
-overlay.className="overlayClass";
-document.body.appendChild(overlay);
-
-
-/*
 function startTimer(duration) {
     var timer = duration, minutes, seconds;
     setInterval(function () {
@@ -24,4 +18,3 @@ window.onload = function () {
     var time = 5*60;
     startTimer(time);
 };
-*/
