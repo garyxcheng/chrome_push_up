@@ -9,12 +9,29 @@ function startTimer(duration) {
 
         if (--timer < 0) {
             timer = duration;
-            alert("Go do pushups");
+            createOverlay();
+        } else if (timer == 3){
+            removeOverlay();
         }
     }, 1000);
 }
-
 window.onload = function () {
-    var time = 5*60;
+    var time = 5;
     startTimer(time);
 };
+
+function createOverlay(){
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {please: "createDiv"}, function(response) {
+      console.log(response.farewell);
+    });
+  });
+}
+
+function removeOverlay(){
+   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {please: "removeDiv"}, function(response) {
+      console.log(response.farewell);
+    });
+  });
+}
