@@ -1,0 +1,3 @@
+First step: create overlay that blocks user from accessing the webpage
+      Opt1: Create some sort background page that goes on top of the webpage
+      Opt2: Use content scripts to physically manipulate the code of the webpage and print something else out
