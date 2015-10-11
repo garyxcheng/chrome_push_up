@@ -23,7 +23,7 @@ function createOverlay(){
     iElement.src="http://i.imgur.com/gZydMTQ.gif";
     iElement.className="iElementClass";
     iElement.id='PictureTitle'
-
+   
     overlay = document.createElement('div');
     overlay.id = 'div';
     overlay.appendChild(pElement);
@@ -36,6 +36,6 @@ function removeOverlay(){
     document.body.removeChild(document.getElementById('div'));
 }
 
-function editOverlay(){
-    document.getElementById('MainPicture').src="http://i.imgur.com/WKnQwiz.gif";
+function editOverlay(objId,attri,new_def){
+    document.getElementById(objId).setAttribute(attri,new_def);
 }
