@@ -15,15 +15,15 @@ function createOverlay(){
     pElement.id='MainTitle';
     pElement.innerHTML = "You need to do pushups";
     pElement.className="pElementClass";
-    /*
+    
     var iElement=document.createElement('img');
     iElement.src="http://i.imgur.com/gZydMTQ.gif";
     iElement.className="iElementClass";
-    */
+    
     overlay = document.createElement('div');
     overlay.id = 'div';
     overlay.appendChild(pElement);
-    //overlay.appendChild(iElement);
+    overlay.appendChild(iElement);
     overlay.className="overlayClass";
     document.body.appendChild(overlay);
 }
