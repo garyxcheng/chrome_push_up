@@ -1,10 +1,13 @@
+var darkened = false;
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.please == "createDiv"){
+    if (request.please == "createDiv" && !darkened){
         createOverlay();
+        darkened = true;
         sendResponse({confirmation: "Successfully created div"});
-    } else if (request.please == "removeDiv"){
+    } else if (request.please == "removeDiv" && darkened){
         removeOverlay();
-        sendResponse({confirmation: "Successfully created div"});
+        darkened = false;
+        sendResponse({confirmation: "Successfully removed div"});
     }
 });
 

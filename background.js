@@ -5,14 +5,30 @@ if (!localStorage.isInitialized) {
   localStorage.dark = 2;
   localStorage.isInitialized = true; // The option initialization.
 }
-var timer = 0, minutes, seconds;
+var timer = parseInt(localStorage.total), minutes, seconds;
+var darkened = false;
 setInterval(function () {
+    duration = parseInt(localStorage.total);
+    dark = parseInt(localStorage.dark);
     if(JSON.parse(localStorage.isActivated)){
+        if(--timer < 0){
+            darkened = false;
+            timer = duration;
+        }
+        else if(timer == dark){
+            darkened = true;
+        }
+        if(darkened == false){
+            removeOverlay();
+        }
+        else if(darkened == true){
+            createOverlay();
+        }
+        /*
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
-        console.log(timer);
         duration = parseInt(localStorage.total);
         dark = parseInt(localStorage.dark);
         if (--timer < 0) {
@@ -20,7 +36,7 @@ setInterval(function () {
             createOverlay();
         } else if (timer == dark){
             removeOverlay();
-        }
+        }*/
     }
 }, 1000);
 /*
@@ -49,17 +65,21 @@ function startTimer(duration, dark) {
 }*/
 
 function createOverlay(){
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {please: "createDiv"}, function(response) {
-      
-    });
+  chrome.tabs.query({}, function(tabs) {
+    for(var i = 0; i < tabs.length; i++){    
+        chrome.tabs.sendMessage(tabs[i].id, {please: "createDiv"}, function(response) {
+          
+        });
+    }
   });
 }
 
 function removeOverlay(){
-   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {please: "removeDiv"}, function(response) {
+   chrome.tabs.query({}, function(tabs) {
+    for(var i = 0; i < tabs.length; i++){    
+      chrome.tabs.sendMessage(tabs[i].id, {please: "removeDiv"}, function(response) {
       
-    });
+      });
+    }
   });
 }
