@@ -8,17 +8,19 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
 });
 
+function randomExercise(){
+}
 
 
 function createOverlay(){
     var pElement=document.createElement('h1');
     pElement.id='MainTitle';
     pElement.innerHTML = "You need to do pushups";
-    pElement.className="pElementClass"
+    document.body.appendChild(pElement);
 
     overlay = document.createElement('div');
     overlay.id = 'div';
-    overlay.appendChild(pElement)
+    overlay.appendChile(createText())
     overlay.className="overlayClass";
     document.body.appendChild(overlay);
 }
