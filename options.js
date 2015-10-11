@@ -5,19 +5,21 @@
 }*/
 
 window.addEventListener('load', function() {
+  console.log(localStorage.dark);
   // Initialize the option controls.
   options.isActivated.checked = JSON.parse(localStorage.isActivated);
                                          // The display activation.
   options.dark.value = localStorage.dark;
-  options.light.value = localStorage.light;
-  if (!options.isActivated.checked) { ghost(true); }
-
+  options.total.value = localStorage.total;
+  
   // Set the display activation and frequency.
   options.isActivated.onchange = function() {
     localStorage.isActivated = options.isActivated.checked;
   };
-  options.frequency.onchange = function() {
+  options.dark.onchange = function() {
     localStorage.dark = options.dark.value;
-    localStorage.light = options.light.value;
+  };
+  options.dark.onchange = function() {
+    localStorage.total = options.total.value;
   };
 });

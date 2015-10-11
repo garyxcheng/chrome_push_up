@@ -1,7 +1,7 @@
 // Conditionally initialize the options.
 if (!localStorage.isInitialized) {
   localStorage.isActivated = true;   // The display activation.
-  localStorage.light = 3;        
+  localStorage.total = 3;        
   localStorage.dark = 2;
   localStorage.isInitialized = true; // The option initialization.
 }
@@ -13,7 +13,7 @@ setInterval(function () {
     seconds = seconds < 10 ? "0" + seconds : seconds;
     if(JSON.parse(localStorage.isActivated)){
         console.log(timer);
-        duration = parseInt(localStorage.dark) + parseInt(localStorage.light);
+        duration = parseInt(localStorage.total);
         dark = parseInt(localStorage.dark);
         if (--timer < 0) {
             timer = duration;
