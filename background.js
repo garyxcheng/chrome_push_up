@@ -7,6 +7,7 @@ if (!localStorage.isInitialized) {
 }
 var timer = parseInt(localStorage.total), minutes, seconds;
 var darkened = false;
+console.log("abc");
 setInterval(function () {
     duration = parseInt(localStorage.total);
     dark = parseInt(localStorage.dark);
@@ -18,12 +19,7 @@ setInterval(function () {
         else if(timer == dark){
             darkened = true;
         }
-        if(darkened == false){
-            removeOverlay();
-        }
-        else if(darkened == true){
-            createOverlay();
-        }
+        sendMsg(timer, darkened);
         /*
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
@@ -63,14 +59,24 @@ function startTimer(duration, dark) {
         }
     }, 1000);
 }*/
-function sendMessage(time){
-    chrome.tabs.query({}, function(tabs) {
-	    for(var i = 0; i < tabs.length; i++){
-		chrome.tabs.sendMessage(tabs[i].id, {please: time}function(response) {
+function sendMsg(time, darkened){
+    if(darkened == true){
+        chrome.tabs.query({}, function(tabs) {
+	        for(var i = 0; i < tabs.length; i++){
+		        chrome.tabs.sendMessage(tabs[i].id, {please: String(time)}, function(response) {
 
-		    });
-	    }
-	});
+		        });
+	        }
+	    });
+    } else {
+        chrome.tabs.query({}, function(tabs) {
+	        for(var i = 0; i < tabs.length; i++){
+		        chrome.tabs.sendMessage(tabs[i].id, {please: "0"}, function(response) {
+
+		        });
+	        }
+	    });
+    }
 }
 
 /*

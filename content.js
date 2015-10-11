@@ -1,17 +1,17 @@
 var darkened = false;
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.please == "createDiv" && !darkened){
+    if (request.please != 0 && !darkened){
         createOverlay();
         darkened = true;
+        minutes = parseInt(request.please / 60, 10);
+        seconds = parseInt(request.please % 60, 10);
         sendResponse({confirmation: "Successfully created div"});
-    } else if (request.please == "removeDiv" && darkened){
+    } else if (request.please == "0" && darkened){
         removeOverlay();
         darkened = false;
         sendResponse({confirmation: "Successfully removed div"});
     }
 });
-
-
 
 function createOverlay(){
     var pElement=document.createElement('h1');
