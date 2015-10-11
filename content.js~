@@ -1,3 +1,4 @@
+
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.please == "createDiv"){
         createOverlay();
@@ -8,19 +9,17 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
 });
 
-function randomExercise(){
-}
 
 
 function createOverlay(){
     var pElement=document.createElement('h1');
     pElement.id='MainTitle';
     pElement.innerHTML = "You need to do pushups";
-    document.body.appendChild(pElement);
+    pElement.className="pElementClass"
 
     overlay = document.createElement('div');
     overlay.id = 'div';
-    overlay.appendChile(createText())
+    overlay.appendChild(pElement)
     overlay.className="overlayClass";
     document.body.appendChild(overlay);
 }
