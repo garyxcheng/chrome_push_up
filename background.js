@@ -5,8 +5,6 @@ if (!localStorage.isInitialized) {
   localStorage.dark = 2;
   localStorage.isInitialized = true; // The option initialization.
 }
-console.log(JSON.parse(localStorage.isActivated));
-console.log(localStorage.light);
 var timer = 0, minutes, seconds;
 setInterval(function () {
     minutes = parseInt(timer / 60, 10);
@@ -14,10 +12,9 @@ setInterval(function () {
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     if(JSON.parse(localStorage.isActivated)){
-        duration = localStorage.dark + localStorage.light;
-        dark = localStorage.dark;
-        console.log(duration);
-        console.log(dark);
+        console.log(timer);
+        duration = parseInt(localStorage.dark) + parseInt(localStorage.light);
+        dark = parseInt(localStorage.dark);
         if (--timer < 0) {
             timer = duration;
             createOverlay();
