@@ -5,7 +5,6 @@
 }*/
 
 window.addEventListener('load', function() {
-  console.log(localStorage.dark);
   // Initialize the option controls.
   options.isActivated.checked = JSON.parse(localStorage.isActivated);
                                          // The display activation.
@@ -19,7 +18,7 @@ window.addEventListener('load', function() {
   options.dark.onchange = function() {
     localStorage.dark = options.dark.value;
   };
-  options.dark.onchange = function() {
+  options.total.onchange = function() {
     localStorage.total = options.total.value;
   };
 });
