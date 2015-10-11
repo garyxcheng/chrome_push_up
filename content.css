@@ -6,12 +6,15 @@
   font-size:400%;
 }
 
-.imgClass{
-
+.iElementClass{
+  border:3px solid #7F0000;
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
 }
 .overlayClass {
   opacity:    0.8; 
-  background-image: url("http://i.imgur.com/gZydMTQ.gif"); 
+  background-color: black; 
   width:      100%;
   height:     100%; 
   z-index:    2147483647;
