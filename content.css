@@ -11,8 +11,9 @@
   padding: 10px;
   display: block;
   margin: 0 auto;
+  opacity:1.0;
 }
-.overlayClass {
+.overlayClass -{
   opacity:    0.8; 
   background-color: black; 
   width:      100%;

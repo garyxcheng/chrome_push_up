@@ -63,7 +63,17 @@ function startTimer(duration, dark) {
         }
     }, 1000);
 }*/
+function sendMessage(time){
+    chrome.tabs.query({}, function(tabs) {
+	    for(var i = 0; i < tabs.length; i++){
+		chrome.tabs.sendMessage(tabs[i].id, {please: time}function(response) {
 
+		    });
+	    }
+	});
+}
+
+/*
 function createOverlay(){
   chrome.tabs.query({}, function(tabs) {
     for(var i = 0; i < tabs.length; i++){    
@@ -83,3 +93,4 @@ function removeOverlay(){
     }
   });
 }
+*/
